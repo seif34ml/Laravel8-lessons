@@ -329,11 +329,9 @@
         </style>
     </head>
     <body class="antialiased">
-        <h1>welcome view</h1>
-        <span><a href="post/post1">1 post view</a></span><br>
-       <br> <span>
-            <a href="post/scnd">2nd post view</a>
-        </span><br>
-        <span><a href="post/thrd">3rd post view</a></span>
+
+      <?php foreach ($posts as $key => $post) {
+          echo $post;
+      }  ?>
     </body>
 </html>

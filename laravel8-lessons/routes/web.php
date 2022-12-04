@@ -1,6 +1,8 @@
 <?php
-
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',["posts"=>Post::findAll()]);
 });
 Route::get('post/{post}', function ($slug) {
-    $singlepost=cache()->remember("posts.{$slug}", 10000,fn()=>file_get_contents(__DIR__. "/../resources/posts/{$slug}.html"));
-    
-    return view('post',["post"=>$singlepost]);
+    return view('post',["post"=> Post :: findSlug($slug)]);
 });
