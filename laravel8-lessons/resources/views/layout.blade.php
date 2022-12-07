@@ -329,8 +329,15 @@
         </style>
     </head>
     <body class="antialiased">
-        @yield('body2')
-        @yield('body')
+        {{-- {{@yield('body')}} --}}
+
+        <?php foreach($posts  as $posts){
+echo '
+        <h1>'. $posts['title'].'</h1>'
+        .'<p>'.$posts['desc'].'</p>'.'<a style="color:`black`" href="post/'.$posts['id'].'"> go here<a/>';
+
+        };
+        ?>
 
     </body>
 </html>

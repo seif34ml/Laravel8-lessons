@@ -1,17 +1,13 @@
 <?php
+
 namespace App\Models;
-use Illuminate\Support\Facades\File;
-class Post
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
 {
-    public  static function findAll()
-    {
-     return File::files(resource_path("posts"));
-    }
-   public  static function findSlug($slug)
-   {
-    return cache()->remember("posts.{$slug}", 10000,fn()=>file_get_contents(resource_path("posts/{$slug}.html")));
-   }
-}
+    use HasFactory;
 
-?>
+
+}
