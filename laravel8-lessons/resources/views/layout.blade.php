@@ -334,7 +334,7 @@
         <?php foreach($posts  as $posts){
 echo '
         <h1>'. $posts['title'].'</h1>'
-        .'<p>'.$posts['desc'].'</p>'.'<a style="color:`black`" href="post/'.$posts['id'].'"> go here<a/>';
+        .'<p>'.$posts['desc'].'</p>'.'<a style="color:`black`" href="post/'.$posts['slug'].'"> go here<a/>';
 
         };
         ?>
