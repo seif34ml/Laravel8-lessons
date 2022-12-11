@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome',["posts"=>Post::all()]);
 });
-Route::get('post/{post:slug}', function (Post $post) {
+Route::get('post/{post}', function (Post $post) {
     return view('post',["post"=> $post]);
 });
 
