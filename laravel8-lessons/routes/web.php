@@ -1,6 +1,7 @@
 <?php
 use App\Models\Post;
 use App\Models\Category;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,13 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome',["posts"=>Post::all()]);
-});
+Route::get('/', [PostController::class,'index']);
 Route::get('post/{post}', function (Post $post) {
     return view('post',["post"=> $post]);
 });
 
 Route::get('/categories/{category}', function (Category $category) {
-    return view('post',["post"=>$category->posts]);
+    return view('category',["posts"=>$category->posts,"categories"=>Category::all()]);
 });

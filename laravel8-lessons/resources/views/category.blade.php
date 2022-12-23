@@ -4,12 +4,12 @@
 
 
         <section class="px-6 py-8">
-            <x-headerandnav :categories="$categories"/>
+            <x-headerandnav  :categories="$categories"/>
 
             <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-               <x-post-card-featured :post="$posts[0]"/>
-
-
+              @if(count ($posts)>0)
+                <x-post-card-featured :post="$posts[0]"/>
+               @if(count ($posts)>=2)
                 <div class="lg:grid lg:grid-cols-2">
                     @foreach ($posts->skip(1) as $post)
                      @if ($loop->iteration<3)
@@ -22,7 +22,9 @@
 
 
                 </div>
+                @endif
 
+                @if(count ($posts)>=4)
                 <div class="lg:grid lg:grid-cols-3">
                     @foreach ($posts->skip(3) as $post)
 
@@ -32,6 +34,8 @@
 
 
                 </div>
+                @endif
+                @endif
             </main>
 
             <footer class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
@@ -63,7 +67,5 @@
             </footer>
         </section>
     </body>
+
 </x-layout>
-
-
-

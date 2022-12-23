@@ -23,4 +23,16 @@ class Post extends Model
          return $this->belongsTo(User::class);
 
  }
+
+
+ public function scopeFilters($query,array $filters)
+ {
+     if($filters['search']!==null){
+
+            $query->where("title","like",'%'.request('search').'%')
+    ->orWhere("desc","like",'%'.request('search').'%');
+         }
+
+ }
+
 }
