@@ -6,14 +6,30 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
-{
+{ var $search,$category;
     function index(){
 
-     $posts=Post::latest();
+        if(request('search')!==null){
+            $search=request('search');
+        }
+        else{
+           $search='';
+        }
 
-
+        if(request('category')!==null){
+            $category=request('category');
+        }
+        else{
+           $category='%';
+        }
 
         return view('welcome',
-        ["posts"=>$posts->filters(request(['search']))->get(),"categories"=>Category::all()]);
+        ["posts"=>Post::latest()->filters(['search'=>$search,'category'=>$category])->get(),"categories"=>Category::all()]);
     }
+    function show(Post $post){
+        return view('post',
+        ["post"=>$post,"categories"=>Category::all()]);
+    }
+
+
 }

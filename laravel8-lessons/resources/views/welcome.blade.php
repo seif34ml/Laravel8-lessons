@@ -2,7 +2,6 @@
 <x-layout>
 
 
-
         <section class="px-6 py-8">
             <x-headerandnav :categories="$categories"/>
 
@@ -24,6 +23,7 @@
                 </div>
 
                 <div class="lg:grid lg:grid-cols-3">
+
                     @foreach ($posts->skip(3) as $post)
 
                         <x-post-card :post="$post"/>

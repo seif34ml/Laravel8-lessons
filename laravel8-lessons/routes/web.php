@@ -18,10 +18,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostController::class,'index']);
-Route::get('post/{post}', function (Post $post) {
-    return view('post',["post"=> $post]);
-});
-
-Route::get('/categories/{category}', function (Category $category) {
-    return view('category',["posts"=>$category->posts,"categories"=>Category::all()]);
-});
+Route::get('post/{post}', [PostController::class,'show']);
+Route::get('/categories/{category}',  [PostController::class,'showAll']);

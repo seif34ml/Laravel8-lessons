@@ -27,12 +27,21 @@ class Post extends Model
 
  public function scopeFilters($query,array $filters)
  {
-     if($filters['search']!==null){
 
-            $query->where("title","like",'%'.request('search').'%')
-    ->orWhere("desc","like",'%'.request('search').'%');
-         }
 
- }
+if(count($filters)>0){
+$query->where(
+    fn($query)=>
+    $query->where("title","like",'%'.$filters['search'].'%')->orWhere("desc","like",'%'.$filters['search'].'%'))->where('category_id','like',$filters['category']);
 
+
+
+    // ->orWhere("desc","like",'%'.$filters['search'].'%')->whereHas('category_id','like',$filters['category']);
+
+        //  $query->when($filters['category']??false,fn($query,$category)=>$query-> where('category_id',$category));
+        }
+
+
+
+}
 }

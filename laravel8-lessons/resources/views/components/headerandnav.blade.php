@@ -1,4 +1,4 @@
-@props(['categories'])
+@props(['categories','currentCategory'])
 
 <nav class="md:flex md:justify-between md:items-center">
     <div>
@@ -35,10 +35,12 @@
 
 
 
-             <select class=" select w-full h-full rounded-xl" value="{{$_SERVER['REQUEST_URI']}}"   >
-                  @foreach($categories as $category)
+             <select class=" select w-full h-full rounded-xl" value="{{request('category')}}"  onchange="filter(event)"  >
 
-                  <option value="/categories/{{$category->id}}"><a class="block" href="/categories/{{$category->id}}">{{$category->name}}</a></option>
+                <option  value="%">All</option>
+                @foreach($categories as $category)
+
+                  <option value="{{$category->id}}">{{$category->name}}</option>
                @endforeach
              </select>
 
@@ -53,8 +55,8 @@
         </div>
 
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
-            <form method="GET" action="#">
-                <input value={{request('search')}} type="text" name="search" placeholder="Find something"
+            <form method="GET" action="/">
+                <input id="search" onclick="applySearch()"  type="text" name="search" placeholder="Find something"
                        class="bg-transparent placeholder-black font-semibold text-sm">
             </form>
         </div>

@@ -15,12 +15,13 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
+            'id'=>'1',
             'user_id'=>$this->faker->numberBetween(0,30),
             'category_id' =>$this->faker->randomElement([4, 6, 9, 1, 3]),
             'created_at'=>now(),
             'updated_at'=>now(),
-            'slug' => $this->faker->words(2,true),
             'title' => $this->faker->words(3,true),
+            'slug' => str_replace(' ', '-', $this->faker->words(2,true)),
             'desc' => $this->faker->unique()->text(100)
         ];
     }
