@@ -24,10 +24,10 @@
     <h2 class="inline-flex mt-2">By Seif Amr<img src="../images/lary-head.svg"
                                                        alt="Head of Lary the mascot"></h2>
 
-    <p class="text-sm mt-14">
+    <p class="text-sm mt-4 ">
         lessons that makes you a master of laravel
     </p>
-
+    @if($categories!==[])
     <div class="flex justify-between mt-8">
         <!--  Category -->
         <div style="width: 136px; height:36px" x-data="{open:false}" x-on:click="open=!open" class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
@@ -75,4 +75,5 @@
 
 
     </div>
+    @endif
 </header>

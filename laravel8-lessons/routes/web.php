@@ -2,6 +2,7 @@
 use App\Models\Post;
 use App\Models\Category;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,3 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PostController::class,'index']);
 Route::get('post/{post}', [PostController::class,'show']);
 Route::get('/categories/{category}',  [PostController::class,'showAll']);
+Route::get('/register',[RegisterController::class,'index']);
+Route::post('/register',[RegisterController::class,'register']);
+
