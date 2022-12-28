@@ -24,7 +24,7 @@ class PostController extends Controller
         }
 
         return view('welcome',
-        ["posts"=>Post::latest()->filters(['search'=>$search,'category'=>$category])->get(),"categories"=>Category::all()]);
+        ["posts"=>Post::latest()->filters(['search'=>$search,'category'=>$category])->paginate(5)->withQueryString(),"categories"=>Category::all()]);
     }
     function show(Post $post){
         return view('post',

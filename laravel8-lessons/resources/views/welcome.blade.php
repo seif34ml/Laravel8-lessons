@@ -10,10 +10,12 @@
 
 
                 <div class="lg:grid lg:grid-cols-2">
+
                     @foreach ($posts->skip(1) as $post)
                      @if ($loop->iteration<3)
                          <x-post-card :post="$post"/>
                      @endif
+
 
                     @endforeach
 
@@ -32,6 +34,7 @@
 
 
                 </div>
+                {{$posts->links()}}
             </main>
 
             <footer class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
