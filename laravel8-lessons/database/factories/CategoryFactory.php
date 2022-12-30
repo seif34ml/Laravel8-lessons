@@ -19,8 +19,9 @@ class CategoryFactory extends Factory
 
             'created_at'=>now(),
             'updated_at'=>now(),
-            'slug' => $text,
+            'slug' => str_replace(' ','-',$text),
             'name' => $text,
+            'id'=>$this->faker->unique()->randomElement( [6])
 
         ];
     }

@@ -17,10 +17,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [RegisterController::class,'indexLogin'])->middleware(['guest']);
+Route::post('/', [RegisterController::class,'login'])->middleware(['guest']);
+Route::get('/register',[RegisterController::class,'index'])->middleware(['guest']);
+Route::post('/register',[RegisterController::class,'register'])->middleware(['guest']);
 
-Route::get('/', [PostController::class,'index']);
-Route::get('post/{post}', [PostController::class,'show']);
-Route::get('/categories/{category}',  [PostController::class,'showAll']);
-Route::get('/register',[RegisterController::class,'index']);
-Route::post('/register',[RegisterController::class,'register']);
+
+Route::get('/logout', [RegisterController::class,'logout'])->middleware(['auth']);
+Route::get('/posts', [PostController::class,'index'])->middleware(['auth']);
+Route::get('post/{post}', [PostController::class,'show'])->middleware(['auth']);;
+Route::get('/categories/{category}',  [PostController::class,'showAll'])->middleware(['auth']);
+
+
 

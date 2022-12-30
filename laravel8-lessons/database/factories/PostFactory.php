@@ -15,8 +15,8 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'id'=>'1',
-            'user_id'=>$this->faker->numberBetween(0,30),
+
+            'user_id'=>$this->faker->randomElement([7, 6, 9, 10, 8]),
             'category_id' =>$this->faker->randomElement([4, 6, 9, 1, 3]),
             'created_at'=>now(),
             'updated_at'=>now(),

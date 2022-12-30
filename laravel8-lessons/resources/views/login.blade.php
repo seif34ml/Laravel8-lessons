@@ -3,10 +3,10 @@
 
     <section class="px-6 py-8 ">
 
-        <x-headerandnav :categories="[]"/>
+
      <h1 class="text-xl mt-14 font-bold mx-auto text-center mt-8 mb-4 underline"> Login</h1>
 
-     <form action="/register" class=" mx-auto flex flex-col w-2/5 items-center justify-between" method="POST" id="logForm">
+     <form action="/login" class=" mx-auto flex flex-col w-2/5 items-center justify-between" method="POST" id="logForm">
         {{ csrf_field() }}
 
         <label class="mt-4 mb-3"  for="inputname" class="mt-4 mb-2">username</label>
@@ -18,16 +18,8 @@
         <input value="{{old('name')}}" type="name" name="name" id="inputname" class="form-control capitalize w-full py-4 px-4 bg-gray-100 border-2 rounded-md" placeholder="username" >
         @endif
 
-        <label class="mt-4 mb-3"  for="inputEmail" class="mt-4 mb-2">Email address</label>
 
-        @if ($errors->has('email'))
- <input value="{{old('email')}}" style="border-color: red" type="email" name="email" id="inputEmail" class="form-control capitalize w-full py-4 px-4 bg-gray-100 border-2 rounded-md" placeholder="Email address" >
 
-         <span class="error mt-2 text-red-600 text-sm">{{ $errors->first('email')}}</span>
-        @else
-        <input value="{{old('email')}}" type="email" name="email" id="inputEmail" class="form-control capitalize w-full py-4 px-4 bg-gray-100 border-2 rounded-md" placeholder="Email address" >
-
-         @endif
 
         <label class="mt-4 mb-3"  for="inputPassword">Password</label>
 
