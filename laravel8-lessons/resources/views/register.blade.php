@@ -4,7 +4,7 @@
     <section class="px-6 py-8 ">
 
         <x-headerandnav :categories="[]"/>
-     <h1 class="text-xl mt-14 font-bold mx-auto text-center mt-8 mb-4 underline"> Login</h1>
+     <h1 class="text-xl mt-14 font-bold mx-auto text-center mt-8 mb-4 underline"> Create an account</h1>
 
      <form action="/register" class=" mx-auto flex flex-col w-2/5 items-center justify-between" method="POST" id="logForm">
         {{ csrf_field() }}
@@ -39,9 +39,9 @@
 
         @endif
 
-        <button class="btn mt-4 bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign In</button>
+        <button class="btn mt-4 bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Register</button>
         <div class="text-center">If you have an account?
-        <a class="small bg-blue-500" href="{{url('registration')}}">Log In</a></div>
+        <a class="small text-blue-500" href="/">Log In</a></div>
         </form>
     </section>
 </x-layout>

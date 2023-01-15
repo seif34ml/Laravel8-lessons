@@ -1,7 +1,7 @@
 @props(['categories','currentCategory'])
 
 <nav class="md:flex md:justify-between md:items-center">
-    <div>
+    <div class=" ">
         <a href="/">
             <img src="../images/logo.svg" alt="Laracasts Logo" width="165" height="16">
         </a>

@@ -39,7 +39,7 @@
 
                    <button class="btn mt-4 bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign In</button>
                    <div class="text-center">have no account yet ?!!
-                   <a class="small text-blue-500" href="{{url('registration')}}">Sign Up</a></div>
+                   <a class="small text-blue-500" href="/register">Sign Up</a></div>
                    </form>
                </section>
         </main>
