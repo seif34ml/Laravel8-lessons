@@ -25,6 +25,16 @@ class Post extends Model
  }
 
 
+ public function Comment()
+ {
+
+
+
+         return $this->hasMany(Comment::class);
+ }
+
+
+
  public function scopeFilters($query,array $filters)
  {
 

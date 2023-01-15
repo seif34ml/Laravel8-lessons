@@ -23,7 +23,7 @@ class RegisterController extends Controller
 
 
       ]);
-      $attributes['verified']=1;
+
       $atts=$attributes;
 
       User::create($atts);
