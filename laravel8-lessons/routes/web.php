@@ -1,6 +1,12 @@
 <?php
-
+use App\Models\Post;
+use App\Models\Category;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +19,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('post/{post}', function ($slug) {
-    $singlepost=cache()->remember("posts.{$slug}", 10000,fn()=>file_get_contents(__DIR__. "/../resources/posts/{$slug}.html"));
-    
-    return view('post',["post"=>$singlepost]);
-});
+Route::get('/', [RegisterController::class,'indexLogin'])->middleware(['guest']);
+Route::post('/', [RegisterController::class,'login'])->middleware(['guest']);
+Route::get('/register',[RegisterController::class,'index'])->middleware(['guest']);
+Route::post('/register',[RegisterController::class,'register'])->middleware(['guest']);
+Route::get('/user/{user:id}', [userController::class,'index'])->middleware(['auth']);
+Route::get('/logout', [RegisterController::class,'logout'])->middleware(['auth']);
+Route::get('/posts', [PostController::class,'index'])->middleware(['auth']);
+Route::get('post/{post:slug}', [PostController::class,'show'])->middleware(['auth']);
+Route::post('post/{post:slug}/comments', [CommentController::class,'addComment']);
+Route::get('/categories/{category}',  [PostController::class,'showAll'])->middleware(['auth']);
+
+
+
