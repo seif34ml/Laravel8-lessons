@@ -3,7 +3,8 @@
     <div class="flex justify-between items-center">
         <span>
             Welcome <span class="text-blue-500">
-          {{auth()->user()->name}}
+                <a href="/user/{{auth()->user()->id}}">
+          {{auth()->user()->name}}</a>
             </span>
         </span>
         <a href="/logout" method="POST" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">

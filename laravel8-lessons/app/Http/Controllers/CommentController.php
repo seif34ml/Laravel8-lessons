@@ -14,7 +14,7 @@ class CommentController extends Controller
 
         ]);
         $attributes['user_id']=auth()->user()->id;
-        $attributes['post_slug']=$post->slug;
+        $attributes['slug']=$post->slug;
         Comment::create($attributes);
        return back();
 

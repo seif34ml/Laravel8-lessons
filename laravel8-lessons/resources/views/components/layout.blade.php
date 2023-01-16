@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer >
-     let categoryparam='%';
-     let searchparam='';
+     var categoryparam='%';
+     var searchparam='';
      if(window.location.href.split('?')+'/'!=window.location.host){
 
         window.location.href.split('?')[1].split("&").forEach(element => {
@@ -23,33 +23,42 @@
 
      }
      function applySearch(event) {
+         setTimeout(() => {
 
-    if (searchparam == "") {
+    if (event.target.value === '') {
+
         if(categoryparam=='%'){
+
             window.location.href=window.location.href
         }
         else{
-        window.location.href = "/?category=" + categoryparam;}
+
+        window.location.href = "/posts/?category=" + categoryparam;}
     }
-    else if(categoryparam=='%'){
-        window.location.href = "/?search=" + searchparam;
+    else if(categoryparam==='%'){
+
+        window.location.href = "/posts/?search=" + searchparam;
     }
     else{
-        window.location.href = "/?search=" + searchparam+'&&category='+categoryparam;
+        window.location.href = "/posts/?search=" + searchparam+'&&category='+categoryparam;
     }
+         }, 500);
+
     }
 
 
      function filter(event) {
     categoryparam = event.target.value;
+    console.log(categoryparam);
 
     if (searchparam == "") {
-        window.location.href = "/?category=" + categoryparam;
+        console.log("jj");
+        window.location.href = "/posts/?category=" + categoryparam;
     } else if (categoryparam == "%") {
-        window.location.href = "/?search=" + searchparam;
+        window.location.href = "/posts/?search=" + searchparam;
     } else {
         window.location.href =
-            "/?search=" + searchparam + "&&" + "category=" + categoryparam;
+            "/posts/?search=" + searchparam + "&&" + "category=" + categoryparam;
     }
 }
 

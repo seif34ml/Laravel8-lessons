@@ -1,10 +1,11 @@
 <?php
 use App\Models\Post;
 use App\Models\Category;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\userController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CommentController;
 
 
 /*
@@ -22,6 +23,7 @@ Route::get('/', [RegisterController::class,'indexLogin'])->middleware(['guest'])
 Route::post('/', [RegisterController::class,'login'])->middleware(['guest']);
 Route::get('/register',[RegisterController::class,'index'])->middleware(['guest']);
 Route::post('/register',[RegisterController::class,'register'])->middleware(['guest']);
+Route::get('/user/{user:id}', [userController::class,'index'])->middleware(['auth']);
 Route::get('/logout', [RegisterController::class,'logout'])->middleware(['auth']);
 Route::get('/posts', [PostController::class,'index'])->middleware(['auth']);
 Route::get('post/{post:slug}', [PostController::class,'show'])->middleware(['auth']);
